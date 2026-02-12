@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GlowVAI — Websites, 3D & AI Solutions</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0b0c10;
+  --glass:rgba(255,255,255,0.08);
+  --border:rgba(255,255,255,0.18);
+  --text:#eaeaea;
+  --muted:#a1a1aa;
+  --accent:#9d7cff;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+html{scroll-behavior:smooth;}
+body{
+  background:radial-gradient(circle at top,#12131a,#050507);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+/* 3D PARTICLE BACKGROUND */
+#bg{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+}
+
+/* NAVBAR */
+nav{
+  position:fixed;
+  top:20px;
+  left:50%;
+  transform:translateX(-50%);
+  width:92%;
+  padding:14px 28px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  backdrop-filter:blur(18px);
+  background:var(--glass);
+  border:1px solid var(--border);
+  border-radius:18px;
+  z-index:100;
+}
+nav h1{
+  font-size:20px;
+  font-weight:700;
+  letter-spacing:0.5px;
+}
+nav ul{
+  display:flex;
+  gap:24px;
+  list-style:none;
+}
+nav a{
+  text-decoration:none;
+  color:var(--text);
+  font-size:14px;
+  opacity:0.85;
+}
+nav a:hover{opacity:1;color:var(--accent);}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:140px 6% 80px;
+}
+.hero-box{
+  max-width:900px;
+  text-align:center;
+}
+.hero-box h2{
+  font-size:56px;
+  line-height:1.1;
+  margin-bottom:20px;
+  background:linear-gradient(135deg,#fff,#bfaaff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.hero-box p{
+  font-size:18px;
+  color:var(--muted);
+  margin-bottom:34px;
+}
+.hero-actions{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+}
+.btn{
+  padding:14px 28px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  background:var(--glass);
+  backdrop-filter:blur(14px);
+  color:white;
+  text-decoration:none;
+  font-weight:500;
+  transition:.3s;
+}
+.btn.primary{
+  background:linear-gradient(135deg,#9d7cff,#6b5cff);
+  border:none;
+}
+.btn:hover{transform:translateY(-3px);}
+
+/* SECTION */
+section{
+  padding:90px 8%;
+}
+.section-title{
+  font-size:34px;
+  margin-bottom:14px;
+}
+.section-desc{
+  color:var(--muted);
+  max-width:650px;
+}
+
+/* FEATURES / SERVICES */
+.grid{
+  margin-top:50px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:26px;
+}
+.card{
+  padding:26px;
+  border-radius:22px;
+  background:linear-gradient(145deg,#111,#0a0a0a);
+  border:1px solid var(--border);
+  transition:.4s;
+}
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 30px 80px rgba(0,0,0,.6);
+}
+.card h4{
+  margin-bottom:10px;
+}
+.card p{
+  font-size:14px;
+  color:var(--muted);
+}
+
+/* PRICING */
+.price{
+  font-size:28px;
+  margin:14px 0;
+}
+
+/* CLIENTS */
+.clients{
+  display:flex;
+  gap:30px;
+  flex-wrap:wrap;
+  margin-top:40px;
+}
+.client{
+  padding:22px 34px;
+  border-radius:18px;
+  background:var(--glass);
+  border:1px solid var(--border);
+  backdrop-filter:blur(12px);
+}
+
+/* CONTACT */
+.contact-box{
+  margin-top:40px;
+  padding:34px;
+  border-radius:26px;
+  background:linear-gradient(145deg,#0f0f14,#070709);
+  border:1px solid var(--border);
+}
+
+/* FOOTER */
+footer{
+  margin-top:80px;
+  padding:60px 8% 30px;
+  border-top:1px solid var(--border);
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:40px;
+}
+footer a{
+  display:block;
+  color:var(--muted);
+  text-decoration:none;
+  margin-top:8px;
+}
+footer a:hover{color:var(--accent);}
+.copy{
+  margin-top:40px;
+  text-align:center;
+  font-size:13px;
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<nav>
+  <h1>GlowVAI</h1>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#clients">Clients</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-box">
+    <h2>We Make Websites & Apps<br>That Feel Alive</h2>
+    <p>Custom 3D websites, premium landing pages & AI tools — built with western-level visuals at Indian pricing.</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="#pricing">View Pricing</a>
+      <a class="btn" href="#contact">Talk to Us</a>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <h3 class="section-title">Core Features & Services</h3>
+  <p class="section-desc">We don’t sell templates. We design immersive digital experiences that convert.</p>
+
+  <div class="grid">
+    <div class="card">
+      <h4>Customizable 3D Websites</h4>
+      <p>Modern animated websites inspired by western startups — at a fraction of their cost.</p>
+    </div>
+    <div class="card">
+      <h4>Free 1-Month Support</h4>
+      <p>We don’t disappear after delivery. Bug fixes and improvements included.</p>
+    </div>
+    <div class="card">
+      <h4>Loyal Client Discount</h4>
+      <p>Returning clients get up to 20% price reduction on future projects.</p>
+    </div>
+    <div class="card">
+      <h4>Legal & Copyright Security</h4>
+      <p>Your website, code & content are protected. No reused or stolen assets.</p>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <h3 class="section-title">Pricing</h3>
+
+  <div class="grid">
+    <div class="card">
+      <h4>Basic Website</h4>
+      <div class="price">₹2,000</div>
+      <p>Clean, fast & responsive website for individuals or small businesses.</p>
+    </div>
+    <div class="card">
+      <h4>Professional 3D Landing Page</h4>
+      <div class="price">₹9,999</div>
+      <p>High-impact animated landing pages designed to convert users.</p>
+    </div>
+    <div class="card">
+      <h4>LLM / AI Tool</h4>
+      <div class="price">Custom</div>
+      <p>Pricing depends on your idea. Let’s discuss scope & feasibility.</p>
+    </div>
+  </div>
+</section>
+
+<section id="clients">
+  <h3 class="section-title">Our Clients</h3>
+  <div class="clients">
+    <div class="client">Vishvarupa_Creations</div>
+    <div class="client">Auto Shorts Generator</div>
+  </div>
+</section>
+
+<section id="contact">
+  <h3 class="section-title">Contact & Support</h3>
+  <div class="contact-box">
+    <p>Email: <strong>support@glowvai.in</strong></p>
+    <p>Instagram: <strong>@ig_cyberwar</strong></p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h4>GlowVAI</h4>
+      <p>Premium websites, 3D experiences & AI solutions.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms & Conditions</a>
+    </div>
+  </div>
+  <div class="copy">© 2026 GlowVAI. All rights reserved. Unauthorized copying or reuse is prohibited.</div>
+</footer>
+
+<!-- 3D PARTICLE SCRIPT -->
+<script>
+const c=document.getElementById("bg"),x=c.getContext("2d");
+function resize(){c.width=innerWidth;c.height=innerHeight;}
+resize();addEventListener("resize",resize);
+let p=Array.from({length:120},()=>({
+  x:Math.random()*c.width,
+  y:Math.random()*c.height,
+  z:Math.random()*2+0.5
+}));
+function draw(){
+  x.clearRect(0,0,c.width,c.height);
+  p.forEach(o=>{
+    o.y+=o.z;
+    if(o.y>c.height)o.y=0;
+    x.fillStyle="rgba(180,150,255,0.6)";
+    x.beginPath();
+    x.arc(o.x,o.y,o.z*1.2,0,Math.PI*2);
+    x.fill();
+  });
+  requestAnimationFrame(draw);
+}
+draw();
+</script>
+
+</body>
+</html>
